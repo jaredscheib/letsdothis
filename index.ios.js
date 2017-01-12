@@ -1,31 +1,32 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  TextInput,
+  View,
 } from 'react-native';
 
 export default class letsdothis extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      textTodo: '(write to-do here)',
+    };
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          What are your priorities for today?
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <TextInput
+          style={styles.inputTodo}
+          onChangeText={textTodo => this.setState({ textTodo })}
+          value={this.state.textTodo}
+        />
       </View>
     );
   }
@@ -34,7 +35,7 @@ export default class letsdothis extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
@@ -43,10 +44,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  inputTodo: {
+    height: 30,
+    borderColor: 'gray',
+    borderWidth: 1,
   },
 });
 
